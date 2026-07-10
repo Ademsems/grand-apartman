@@ -83,7 +83,7 @@ export default function Footer() {
           <p className="whitespace-nowrap">
             {t.footer.builtBy}{" "}
             <a
-              href="https://dunajmedia.com"
+              href="https://dunajmedia.sk"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gold transition-colors"
