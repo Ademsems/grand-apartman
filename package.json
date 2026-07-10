@@ -1,0 +1,33 @@
+{
+  "name": "grand-apartman",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "logo": "node scripts/generate-logo.js"
+  },
+  "dependencies": {
+    "next": "14.2.35",
+    "react": "^18",
+    "react-dom": "^18",
+    "framer-motion": "^11",
+    "resend": "^3",
+    "@next/font": "^14"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "tailwindcss": "^3",
+    "postcss": "^8",
+    "autoprefixer": "^10",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "sharp": "^0.33",
+    "jimp": "^0.22"
+  }
+}

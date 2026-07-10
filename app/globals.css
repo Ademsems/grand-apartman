@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  html {
+    font-family: var(--font-jost), system-ui, sans-serif;
+    background-color: #FBF8F2;
+    color: #2A231C;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #C6A769;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-cormorant), Georgia, serif;
+  }
+
+  /* Gold filigree divider */
+  .filigree-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #C6A769;
+  }
+  .filigree-divider::before,
+  .filigree-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C6A769, transparent);
+  }
+
+  /* Branded placeholder for missing images */
+  .img-placeholder {
+    background: linear-gradient(135deg, #EDE3D0 0%, #F7F2EA 100%);
+    border: 1px solid #C6A769;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #A67C52;
+  }
+}
+
+/* Reduced motion — disable all transitions and animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
