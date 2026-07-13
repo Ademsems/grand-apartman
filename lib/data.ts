@@ -12,8 +12,10 @@ export const MAIN_BOOKING_URL =
 // PLACEHOLDER — TODO: confirm real email before launch
 export const CONTACT_EMAIL = "info@grandapartman.sk";
 
-// PLACEHOLDER — TODO: confirm real phone number before launch
-export const CONTACT_PHONE = "+421 ___ ___ ___";
+export const CONTACT_PHONES = [
+  { name: "Anka", number: "+421 903 229 180", languages: "Slovak, Hungarian" },
+  { name: "Simon", number: "+421 903 229 180", languages: "English" },
+];
 
 // Review snapshot — HARDCODED manual snapshot from Booking.com (update periodically)
 export const REVIEW_SNAPSHOT = {

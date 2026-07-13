@@ -2,7 +2,7 @@
 
 import FadeIn from "./FadeIn";
 import { useLang } from "@/lib/LanguageContext";
-import { CONTACT_EMAIL, CONTACT_PHONE, LOCATION } from "@/lib/data";
+import { CONTACT_EMAIL, CONTACT_PHONES, LOCATION } from "@/lib/data";
 import ContactForm from "./ContactForm";
 
 export default function ContactSection() {
@@ -39,9 +39,21 @@ export default function ContactSection() {
                 <h3 className="font-sans text-xs font-semibold tracking-widest uppercase text-gold mb-4">
                   Phone
                 </h3>
-                <a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`} className="font-sans text-sm text-espresso hover:text-gold transition-colors">
-                  {CONTACT_PHONE}
-                </a>
+                <div className="flex flex-col gap-3">
+                  {CONTACT_PHONES.map((p) => (
+                    <div key={p.name}>
+                      <a
+                        href={`tel:${p.number.replace(/\s/g, "")}`}
+                        className="font-sans text-sm text-espresso hover:text-gold transition-colors"
+                      >
+                        {p.number}
+                      </a>
+                      <p className="font-sans text-xs text-cappuccino mt-0.5">
+                        {p.name} · {p.languages}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div>
                 <h3 className="font-sans text-xs font-semibold tracking-widest uppercase text-gold mb-4">

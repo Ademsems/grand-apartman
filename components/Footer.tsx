@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useLang } from "@/lib/LanguageContext";
 import Logo from "./Logo";
-import { MAIN_BOOKING_URL, CONTACT_EMAIL, CONTACT_PHONE, LOCATION, COMPANY_LEGAL } from "@/lib/data";
+import { MAIN_BOOKING_URL, CONTACT_EMAIL, CONTACT_PHONES, LOCATION, COMPANY_LEGAL } from "@/lib/data";
 
 export default function Footer() {
   const { t } = useLang();
@@ -16,13 +16,16 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Logo variant="light" height={40} />
             <p className="text-sm font-sans leading-relaxed text-paper/60">{t.footer.tagline}</p>
-            <p className="text-xs text-paper/40 leading-relaxed">
-              {CONTACT_EMAIL}
-              <br />
-              {CONTACT_PHONE}
-              <br />
-              {LOCATION}
-            </p>
+            <div className="text-xs text-paper/40 leading-relaxed flex flex-col gap-0.5">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gold transition-colors">{CONTACT_EMAIL}</a>
+              {CONTACT_PHONES.map((p) => (
+                <a key={p.name} href={`tel:${p.number.replace(/\s/g, "")}`} className="hover:text-gold transition-colors">
+                  {p.name}: <span className="tracking-wide">{p.number}</span>
+                  <span className="text-paper/25"> · {p.languages}</span>
+                </a>
+              ))}
+              <span>{LOCATION}</span>
+            </div>
           </div>
 
           {/* Quick links */}
