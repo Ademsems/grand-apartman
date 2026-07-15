@@ -23,7 +23,6 @@ function ApartmentCard({
   onToggle: () => void;
 }) {
   const { t, locale } = useLang();
-  const [imgIdx, setImgIdx] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const name = locale === "sk" ? apt.nameSuffixSk : apt.nameSuffix;
@@ -82,27 +81,7 @@ function ApartmentCard({
         style={{ maxHeight: expanded ? "700px" : "0px" }}
       >
         <div className="px-5 pb-6 border-t border-champagne/50">
-          {/* Mini gallery */}
-          {images.length > 1 && (
-            <div className="mt-4 mb-4">
-              <SafeImage src={images[imgIdx] ?? ""} alt={`${name} photo ${imgIdx + 1}`} aspectRatio="16/9" />
-              <div className="flex gap-1.5 mt-2 overflow-x-auto pb-1">
-                {images.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setImgIdx(i)}
-                    className={`flex-shrink-0 w-12 h-9 rounded overflow-hidden border-2 transition-colors ${i === imgIdx ? "border-gold" : "border-transparent"}`}
-                    aria-label={`View photo ${i + 1}`}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <p className="font-sans text-sm text-espresso-soft leading-relaxed mt-4">{shortDesc}</p>
+          <p className="font-sans text-sm text-espresso-soft leading-relaxed mt-5">{shortDesc}</p>
 
           <div className="mt-5 flex flex-col sm:flex-row gap-3">
             <Link

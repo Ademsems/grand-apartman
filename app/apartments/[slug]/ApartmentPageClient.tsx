@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/LanguageContext";
 import { type Apartment, BRAND_NAME, HOUSE_RULES } from "@/lib/data";
-import SafeImage from "@/components/SafeImage";
 import FadeIn from "@/components/FadeIn";
 import ContactForm from "@/components/ContactForm";
+import ApartmentGallery from "@/components/ApartmentGallery";
 
 function ApartmentJsonLd({ apt }: { apt: Apartment }) {
   const ld = {
@@ -38,7 +37,6 @@ type Props = { apt: Apartment; images: string[] };
 
 export default function ApartmentPageClient({ apt, images }: Props) {
   const { t, locale } = useLang();
-  const [activeImg, setActiveImg] = useState(0);
 
   const name = locale === "sk" ? apt.nameSuffixSk : apt.nameSuffix;
   const description = locale === "sk" ? apt.descriptionSk : apt.description;
@@ -57,33 +55,7 @@ export default function ApartmentPageClient({ apt, images }: Props) {
             {t.apartmentPage.backToApartments}
           </Link>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 mb-4">
-          <div className="md:col-span-8">
-            <SafeImage
-              src={images[activeImg] ?? ""}
-              alt={`${name} — main photo`}
-              aspectRatio="16/10"
-              className="rounded-xl"
-            />
-          </div>
-          <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-3 max-h-[500px] overflow-auto">
-            {images.length > 0 ? (
-              images.slice(0, 4).map((img, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveImg(i)}
-                  className={`rounded-lg overflow-hidden border-2 transition-colors ${i === activeImg ? "border-gold" : "border-transparent"}`}
-                  aria-label={`View photo ${i + 1}`}
-                >
-                  <SafeImage src={img} alt="" aspectRatio="4/3" objectFit="cover" />
-                </button>
-              ))
-            ) : (
-              <SafeImage src="" alt="No photos yet" aspectRatio="4/3" />
-            )}
-          </div>
-        </div>
+        <ApartmentGallery images={images} name={name} />
       </div>
 
       {/* Details */}
