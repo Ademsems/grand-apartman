@@ -65,6 +65,7 @@ export const dict = {
       name: "Name",
       email: "Email address",
       message: "Message",
+      phone: "Phone number",
       send: "Send message",
       sending: "Sending…",
       successTitle: "Message received",
@@ -74,6 +75,7 @@ export const dict = {
       honeypot: "Leave this field empty",
       required: "required",
       invalidEmail: "Please enter a valid email address.",
+      invalidPhone: "Please enter a valid phone number (at least 7 digits).",
       messageTooShort: "Please write at least 10 characters.",
     },
     // Individual apartment page
@@ -170,6 +172,7 @@ export const dict = {
       name: "Meno",
       email: "E-mailová adresa",
       message: "Správa",
+      phone: "Telefónne číslo",
       send: "Odoslať správu",
       sending: "Odosiela sa…",
       successTitle: "Správa prijatá",
@@ -179,6 +182,7 @@ export const dict = {
       honeypot: "Toto pole nechajte prázdne",
       required: "povinné",
       invalidEmail: "Prosím, zadajte platnú e-mailovú adresu.",
+      invalidPhone: "Prosím, zadajte platné telefónne číslo (aspoň 7 číslic).",
       messageTooShort: "Prosím, napíšte aspoň 10 znakov.",
     },
     apartmentPage: {

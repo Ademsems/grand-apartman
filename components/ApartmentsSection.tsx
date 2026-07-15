@@ -36,29 +36,6 @@ function ApartmentCard({
     }
   }
 
-  if (apt.comingSoon) {
-    return (
-      <div
-        ref={cardRef}
-        className="bg-cream border border-champagne rounded-lg overflow-hidden flex flex-col items-center justify-center py-16 px-8 text-center"
-      >
-        <span className="font-sans text-xs tracking-widest uppercase text-gold mb-4">
-          {t.apartments.comingSoon}
-        </span>
-        <h3 className="font-serif text-2xl text-espresso font-light mb-3">
-          {BRAND_NAME} — {name}
-        </h3>
-        <p className="font-sans text-sm text-espresso-soft">{t.apartments.comingSoonDesc}</p>
-        <Link
-          href={`/apartments/${apt.slug}`}
-          className="mt-6 text-xs font-sans tracking-widest border border-gold text-gold px-6 py-2.5 rounded hover:bg-gold hover:text-espresso transition-all"
-        >
-          {t.apartments.learnMore}
-        </Link>
-      </div>
-    );
-  }
-
   return (
     <div
       ref={cardRef}
@@ -73,7 +50,6 @@ function ApartmentCard({
         aria-expanded={expanded}
         aria-controls={`apt-panel-${apt.slug}`}
       >
-        {/* Preview image */}
         <div className="overflow-hidden">
           <SafeImage
             src={images[0] ?? ""}
@@ -88,7 +64,10 @@ function ApartmentCard({
             <h3 className="font-serif text-xl text-espresso font-light">{name}</h3>
             <p className="font-sans text-xs text-cappuccino mt-1">{apt.size} · {t.apartments.sleeps} {apt.sleeps}</p>
           </div>
-          <span className="text-gold mt-1 flex-shrink-0 transition-transform duration-300" style={{ transform: expanded ? "rotate(180deg)" : "none" }}>
+          <span
+            className="text-gold mt-1 flex-shrink-0 transition-transform duration-300"
+            style={{ transform: expanded ? "rotate(180deg)" : "none" }}
+          >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
               <polyline points="3 6 9 12 15 6" />
             </svg>
@@ -173,9 +152,7 @@ export default function ApartmentsSection({ apartmentImages }: Props) {
                 apt={apt}
                 images={apartmentImages[apt.slug] ?? []}
                 expanded={expandedSlug === apt.slug}
-                onToggle={() =>
-                  setExpandedSlug(expandedSlug === apt.slug ? null : apt.slug)
-                }
+                onToggle={() => setExpandedSlug(expandedSlug === apt.slug ? null : apt.slug)}
               />
             </FadeIn>
           ))}

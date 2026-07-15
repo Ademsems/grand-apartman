@@ -23,6 +23,6 @@ export default function ApartmentPage({ params }: Props) {
   const apt = APARTMENTS.find((a) => a.slug === params.slug);
   if (!apt) notFound();
 
-  const images = getImages(`images/apartments/${apt.slug}`);
+  const images = getImages(`images/apartments/${apt.imageFolder}`);
   return <ApartmentPageClient apt={apt} images={images} />;
 }

@@ -40,30 +40,23 @@ export default function ApartmentsIndexClient({ images }: Props) {
                     <SafeImage
                       src={aptImages[0] ?? ""}
                       alt={name}
-                      aspectRatio={apt.comingSoon ? "4/3" : "4/3"}
+                      aspectRatio="4/3"
                       className="h-full"
                       objectFit="cover"
                     />
                   </div>
                   <div className="p-8 flex flex-col justify-between gap-6 flex-1">
                     <div>
-                      {apt.comingSoon && (
-                        <span className="inline-block font-sans text-xs tracking-widest uppercase text-gold border border-gold/40 px-2.5 py-0.5 rounded mb-3">
-                          {t.apartments.comingSoon}
-                        </span>
-                      )}
                       <h2 className="font-serif text-display-md text-espresso font-light">
                         {BRAND_NAME} — {name}
                       </h2>
-                      {!apt.comingSoon && (
-                        <div className="flex flex-wrap gap-4 mt-3 text-xs font-sans text-cappuccino">
-                          <span>{apt.size}</span>
-                          <span>·</span>
-                          <span>{t.apartments.sleeps} {apt.sleeps}</span>
-                          <span>·</span>
-                          <span>{beds}</span>
-                        </div>
-                      )}
+                      <div className="flex flex-wrap gap-4 mt-3 text-xs font-sans text-cappuccino">
+                        <span>{apt.size}</span>
+                        <span>·</span>
+                        <span>{t.apartments.sleeps} {apt.sleeps}</span>
+                        <span>·</span>
+                        <span>{beds}</span>
+                      </div>
                       <p className="font-sans text-sm text-espresso-soft leading-relaxed mt-4 max-w-lg">
                         {shortDesc}
                       </p>
@@ -73,18 +66,16 @@ export default function ApartmentsIndexClient({ images }: Props) {
                         href={`/apartments/${apt.slug}`}
                         className="text-xs font-sans font-semibold tracking-wider bg-espresso text-paper px-6 py-2.5 rounded hover:bg-cappuccino-deep transition-colors"
                       >
-                        {apt.comingSoon ? t.apartments.learnMore : t.apartmentPage.bookNow.replace("Book on ", "")}
+                        {t.apartments.learnMore}
                       </Link>
-                      {!apt.comingSoon && (
-                        <a
-                          href={apt.bookingUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs font-sans font-semibold tracking-wider border border-gold text-gold px-6 py-2.5 rounded hover:bg-gold hover:text-espresso transition-all"
-                        >
-                          {t.nav.bookNow}
-                        </a>
-                      )}
+                      <a
+                        href={apt.bookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-sans font-semibold tracking-wider border border-gold text-gold px-6 py-2.5 rounded hover:bg-gold hover:text-espresso transition-all"
+                      >
+                        {t.nav.bookNow}
+                      </a>
                     </div>
                   </div>
                 </div>

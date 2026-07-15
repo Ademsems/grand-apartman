@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ApartmentsPage() {
   const images: Record<string, string[]> = {};
   for (const apt of APARTMENTS) {
-    images[apt.slug] = getImages(`images/apartments/${apt.slug}`);
+    images[apt.slug] = getImages(`images/apartments/${apt.imageFolder}`);
   }
   return <ApartmentsIndexClient images={images} />;
 }

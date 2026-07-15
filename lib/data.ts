@@ -9,7 +9,6 @@ export const LOCATION = "Podhajska, Slovakia";
 export const MAIN_BOOKING_URL =
   "https://www.booking.com/hotel/sk/grand-apartman-5-star-luxury-podhajska-apartman.en-gb.html?aid=964694&app_hotel_id=13046959";
 
-// PLACEHOLDER — TODO: confirm real email before launch
 export const CONTACT_EMAIL = "info@grandapartman.sk";
 
 export const CONTACT_PHONES = [
@@ -50,7 +49,9 @@ export type AmenityGroup = {
 
 export type Apartment = {
   slug: string;
-  nameSuffix: string;   // appended to "Grand Apartman —"
+  /** Subfolder under /public/images/apartments/ — may differ from slug */
+  imageFolder: string;
+  nameSuffix: string;
   nameSuffixSk: string;
   size: string;
   sleeps: number;
@@ -63,7 +64,6 @@ export type Apartment = {
   description: string;
   descriptionSk: string;
   bookingUrl: string;
-  comingSoon?: boolean;
   amenities: AmenityGroup[];
 };
 
@@ -374,7 +374,8 @@ const superiorAmenities: AmenityGroup[] = [
 
 export const APARTMENTS: Apartment[] = [
   {
-    slug: "studio-balcony",
+    slug: "studio-balcony-306",
+    imageFolder: "Studio-Apartment-with-Balcony-306",
     nameSuffix: "Studio Apartment with Balcony",
     nameSuffixSk: "Štúdiový apartmán s balkónom",
     size: "28 m²",
@@ -400,29 +401,30 @@ Večery môžete stráviť na pohovke so streamingom na flat-screen smart TV, al
 
 Parkety a dlaždicové podlahy, hypoalergénna posteľná bielizeň, trezor a žehlička s žehliacou doskou dopĺňajú praktické detaily, vďaka ktorým sa aj dlhšie pobyty cítia ako doma.`,
     bookingUrl:
-      "https://www.booking.com/hotel/sk/grand-apartman-5-star-luxury-podhajska-apartman.en-gb.html?aid=964694&app_hotel_id=13046959&checkin=2025-11-18&checkout=2025-11-20&group_adults=2&group_children=0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA#room_1304695902",
+      "https://www.booking.com/hotel/sk/grand-apartman-5-star-luxury-podhajska-apartman.en-gb.html?aid=964694&app_hotel_id=13046959#room_1304695902",
     amenities: studioAmenities,
   },
   {
-    slug: "superior-balcony",
-    nameSuffix: "Superior Apartment with Balcony",
-    nameSuffixSk: "Superior apartmán s balkónom",
+    slug: "superior-balcony-301",
+    imageFolder: "Superior-Apartment-with-Balcony-301",
+    nameSuffix: "Superior Apartment with Balcony — Room 301",
+    nameSuffixSk: "Superior apartmán s balkónom — izba 301",
     size: "32 m²",
     sleeps: 2,
     beds: "1 extra-large double bed",
     bedsSk: "1 extra veľká manželská posteľ",
     bathrooms: "1 bathroom (walk-in shower)",
     bathroomsSk: "1 kúpeľňa (sprchovací kút)",
-    shortDesc: "Premium apartment for couples — extra-large bed, minibar, balcony & garden views.",
-    shortDescSk: "Prémiový apartmán pre páry — extra veľká posteľ, minibar, balkón a výhľad na záhradu.",
-    description: `For those who believe a holiday should be nothing short of exceptional, the Superior Apartment is your answer. Four square metres larger than the Studio, it has been finished with couples in mind — generous, calm, and quietly luxurious.
+    shortDesc: "Premium apartment for couples — Room 301. Extra-large bed, minibar, balcony & garden views.",
+    shortDescSk: "Prémiový apartmán pre páry — izba 301. Extra veľká posteľ, minibar, balkón a výhľad na záhradu.",
+    description: `For those who believe a holiday should be nothing short of exceptional, the Superior Apartment (Room 301) is your answer. Four square metres larger than the Studio, it has been finished with couples in mind — generous, calm, and quietly luxurious.
 
 The centrepiece is an extra-large double bed dressed in hypoallergenic linen, positioned to face the garden. Soundproofed walls ensure complete privacy, while air conditioning keeps the room at your ideal temperature regardless of the season.
 
 A fully equipped kitchen — with stovetop, refrigerator, microwave, toaster, coffee machine, and all the essentials — means you can cook to your own rhythm. The minibar is stocked for moments when only something cold will do. Step through to the private balcony for an al fresco breakfast among garden views that feel a world away from the everyday.
 
 In the evenings, the flat-screen smart TV with streaming services, a sofa, and a seating area create a natural retreat. Bespoke details — bathrobe, free toiletries, a safety deposit box, and iron & ironing facilities — complete the picture of a stay designed for absolute comfort.`,
-    descriptionSk: `Pre tých, ktorí veria, že dovolenka by mala byť skutočne výnimočná, je Superior apartmán tou správnou voľbou. O štyri metre štvorcové väčší ako štúdio, navrhnutý s ohľadom na páry — veľkorysý, pokojný a nenápadne luxusný.
+    descriptionSk: `Pre tých, ktorí veria, že dovolenka by mala byť skutočne výnimočná, je Superior apartmán (izba 301) tou správnou voľbou. O štyri metre štvorcové väčší ako štúdio, navrhnutý s ohľadom na páry — veľkorysý, pokojný a nenápadne luxusný.
 
 Centrom je extra veľká manželská posteľ oblečená v hypoalergénnej bielizni, umiestnená s výhľadom do záhrady. Zvukotesné steny zaručujú úplné súkromie, zatiaľ čo klimatizácia udržuje miestnosť na vašej ideálnej teplote bez ohľadu na ročné obdobie.
 
@@ -430,26 +432,39 @@ Plne vybavená kuchyňa — s varnou doskou, chladničkou, mikrovlnnou rúrou, h
 
 Večer flat-screen smart TV so streamingom, pohovka a sedacia zóna vytvárajú prirodzené útočisko. Špeciálne detaily — župan, bezplatné toaletné potreby, trezor a žehlička s žehliacou doskou — dotvárajú obraz pobytu navrhnutého pre absolútny komfort.`,
     bookingUrl:
-      "https://www.booking.com/hotel/sk/grand-apartman-5-star-luxury-podhajska-apartman.en-gb.html?aid=964694&app_hotel_id=13046959&checkin=2025-11-18&checkout=2025-11-20&group_adults=2&group_children=0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA#room_1304695901",
+      "https://www.booking.com/hotel/sk/grand-apartman-5-star-luxury-podhajska-apartman.en-gb.html?aid=964694&app_hotel_id=13046959#room_1304695901",
     amenities: superiorAmenities,
   },
   {
-    slug: "apartment-three",
-    nameSuffix: "Apartment Three",
-    nameSuffixSk: "Tretí apartmán",
-    size: "–",
-    sleeps: 0,
-    beds: "–",
-    bedsSk: "–",
-    bathrooms: "–",
-    bathroomsSk: "–",
-    shortDesc: "Coming soon — a new addition to the Grand Apartman collection.",
-    shortDescSk: "Čoskoro — nový prírastok do kolekcie Grand Apartman.",
-    description: "Details coming soon.",
-    descriptionSk: "Detaily budú čoskoro k dispozícii.",
+    slug: "superior-balcony-308",
+    imageFolder: "Superior-Apartment-with-Balcony-308",
+    nameSuffix: "Superior Apartment with Balcony — Room 308",
+    nameSuffixSk: "Superior apartmán s balkónom — izba 308",
+    size: "32 m²",
+    sleeps: 2,
+    beds: "1 extra-large double bed",
+    bedsSk: "1 extra veľká manželská posteľ",
+    bathrooms: "1 bathroom (walk-in shower)",
+    bathroomsSk: "1 kúpeľňa (sprchovací kút)",
+    shortDesc: "Premium apartment for couples — Room 308. Extra-large bed, minibar, balcony & garden views.",
+    shortDescSk: "Prémiový apartmán pre páry — izba 308. Extra veľká posteľ, minibar, balkón a výhľad na záhradu.",
+    description: `For those who believe a holiday should be nothing short of exceptional, the Superior Apartment (Room 308) is your answer. Four square metres larger than the Studio, it has been finished with couples in mind — generous, calm, and quietly luxurious.
+
+The centrepiece is an extra-large double bed dressed in hypoallergenic linen, positioned to face the garden. Soundproofed walls ensure complete privacy, while air conditioning keeps the room at your ideal temperature regardless of the season.
+
+A fully equipped kitchen — with stovetop, refrigerator, microwave, toaster, coffee machine, and all the essentials — means you can cook to your own rhythm. The minibar is stocked for moments when only something cold will do. Step through to the private balcony for an al fresco breakfast among garden views that feel a world away from the everyday.
+
+In the evenings, the flat-screen smart TV with streaming services, a sofa, and a seating area create a natural retreat. Bespoke details — bathrobe, free toiletries, a safety deposit box, and iron & ironing facilities — complete the picture of a stay designed for absolute comfort.`,
+    descriptionSk: `Pre tých, ktorí veria, že dovolenka by mala byť skutočne výnimočná, je Superior apartmán (izba 308) tou správnou voľbou. O štyri metre štvorcové väčší ako štúdio, navrhnutý s ohľadom na páry — veľkorysý, pokojný a nenápadne luxusný.
+
+Centrom je extra veľká manželská posteľ oblečená v hypoalergénnej bielizni, umiestnená s výhľadom do záhrady. Zvukotesné steny zaručujú úplné súkromie, zatiaľ čo klimatizácia udržuje miestnosť na vašej ideálnej teplote bez ohľadu na ročné obdobie.
+
+Plne vybavená kuchyňa — s varnou doskou, chladničkou, mikrovlnnou rúrou, hriankovačom, kávovarom a všetkým potrebným — vám umožní variť vlastným tempom. Minibar je zásobený pre chvíle, keď je potrebné niečo chladné. Vyjdite na súkromný balkón na raňajky al fresco s výhľadom na záhradu, ktorý pôsobí ako iný svet.
+
+Večer flat-screen smart TV so streamingom, pohovka a sedacia zóna vytvárajú prirodzené útočisko. Špeciálne detaily — župan, bezplatné toaletné potreby, trezor a žehlička s žehliacou doskou — dotvárajú obraz pobytu navrhnutého pre absolútny komfort.`,
+    // TODO: Replace with room-specific Booking.com anchor when available
     bookingUrl: MAIN_BOOKING_URL,
-    comingSoon: true,
-    amenities: [],
+    amenities: superiorAmenities,
   },
 ];
 

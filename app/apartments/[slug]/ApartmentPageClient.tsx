@@ -8,9 +8,7 @@ import SafeImage from "@/components/SafeImage";
 import FadeIn from "@/components/FadeIn";
 import ContactForm from "@/components/ContactForm";
 
-// JSON-LD structured data
 function ApartmentJsonLd({ apt }: { apt: Apartment }) {
-  if (apt.comingSoon) return null;
   const ld = {
     "@context": "https://schema.org",
     "@type": "Apartment",
@@ -48,32 +46,6 @@ export default function ApartmentPageClient({ apt, images }: Props) {
   const bathrooms = locale === "sk" ? apt.bathroomsSk : apt.bathrooms;
   const houseRules = locale === "sk" ? HOUSE_RULES.sk : HOUSE_RULES.en;
 
-  // Coming soon state
-  if (apt.comingSoon) {
-    return (
-      <div className="pt-28 pb-24 px-4 sm:px-6 bg-paper min-h-screen">
-        <ApartmentJsonLd apt={apt} />
-        <div className="max-w-2xl mx-auto text-center">
-          <Link href="/apartments" className="font-sans text-xs text-cappuccino hover:text-gold transition-colors">
-            {t.apartmentPage.backToApartments}
-          </Link>
-          <div className="mt-12 mb-8 filigree-divider">
-            <span className="font-serif text-gold text-xl">✦</span>
-          </div>
-          <span className="font-sans text-xs tracking-widest uppercase text-gold">{t.apartments.comingSoon}</span>
-          <h1 className="font-serif text-display-lg text-espresso font-light mt-4 mb-6">
-            {BRAND_NAME} — {name}
-          </h1>
-          <p className="font-sans text-base text-espresso-soft leading-relaxed">{t.apartmentPage.comingSoonBody}</p>
-          <div className="mt-14 border-t border-champagne pt-14">
-            <h2 className="font-serif text-2xl text-espresso font-light mb-8">{t.apartmentPage.contactUs}</h2>
-            <ContactForm />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="pt-24 bg-paper min-h-screen">
       <ApartmentJsonLd apt={apt} />
@@ -96,17 +68,18 @@ export default function ApartmentPageClient({ apt, images }: Props) {
             />
           </div>
           <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-3 max-h-[500px] overflow-auto">
-            {images.slice(0, 4).map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveImg(i)}
-                className={`rounded-lg overflow-hidden border-2 transition-colors ${i === activeImg ? "border-gold" : "border-transparent"}`}
-                aria-label={`View photo ${i + 1}`}
-              >
-                <SafeImage src={img} alt="" aspectRatio="4/3" objectFit="cover" />
-              </button>
-            ))}
-            {images.length === 0 && (
+            {images.length > 0 ? (
+              images.slice(0, 4).map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveImg(i)}
+                  className={`rounded-lg overflow-hidden border-2 transition-colors ${i === activeImg ? "border-gold" : "border-transparent"}`}
+                  aria-label={`View photo ${i + 1}`}
+                >
+                  <SafeImage src={img} alt="" aspectRatio="4/3" objectFit="cover" />
+                </button>
+              ))
+            ) : (
               <SafeImage src="" alt="No photos yet" aspectRatio="4/3" />
             )}
           </div>

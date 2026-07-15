@@ -13,7 +13,7 @@ export default function HomePage() {
 
   const apartmentImages: Record<string, string[]> = {};
   for (const apt of APARTMENTS) {
-    apartmentImages[apt.slug] = getImages(`images/apartments/${apt.slug}`);
+    apartmentImages[apt.slug] = getImages(`images/apartments/${apt.imageFolder}`);
   }
 
   return (
