@@ -12,13 +12,16 @@ export function getImages(folderRelPath: string): string[] {
   try {
     const absFolder = path.join(process.cwd(), "public", folderRelPath);
     const entries = fs.readdirSync(absFolder);
-    return entries
-      .filter((f) => {
-        const ext = path.extname(f).toLowerCase();
-        return IMAGE_EXTS.has(ext);
-      })
-      .sort()
-      .map((f) => `/${folderRelPath}/${f}`);
+    const images = entries.filter((f) => IMAGE_EXTS.has(path.extname(f).toLowerCase()));
+
+    // Identify thumbnail file (name without extension = "thumbnail", case-insensitive)
+    const thumbnailFile = images.find(
+      (f) => path.basename(f, path.extname(f)).toLowerCase() === "thumbnail"
+    );
+    const rest = images.filter((f) => f !== thumbnailFile).sort();
+    const ordered = thumbnailFile ? [thumbnailFile, ...rest] : rest;
+
+    return ordered.map((f) => `/${folderRelPath}/${encodeURIComponent(f)}`);
   } catch {
     return [];
   }

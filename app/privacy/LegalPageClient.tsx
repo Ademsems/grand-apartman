@@ -16,7 +16,7 @@ export default function LegalPageClient({ type }: Props) {
   const warning = isPrivacy ? t.privacy.templateWarning : t.terms.templateWarning;
 
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-6 bg-paper min-h-screen">
+    <div className="pt-40 pb-24 px-4 sm:px-6 bg-paper min-h-screen">
       <div className="max-w-3xl mx-auto">
         <FadeIn>
           <div className="bg-champagne/40 border border-gold/30 rounded-lg px-5 py-4 mb-10">

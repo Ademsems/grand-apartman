@@ -45,7 +45,7 @@ export default function ApartmentPageClient({ apt, images }: Props) {
   const houseRules = locale === "sk" ? HOUSE_RULES.sk : HOUSE_RULES.en;
 
   return (
-    <div className="pt-24 bg-paper min-h-screen">
+    <div className="pt-40 bg-paper min-h-screen">
       <ApartmentJsonLd apt={apt} />
 
       {/* Gallery */}
@@ -144,7 +144,7 @@ export default function ApartmentPageClient({ apt, images }: Props) {
 
           {/* Sticky sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-28 bg-cream border border-champagne rounded-xl p-6 flex flex-col gap-5">
+            <div className="sticky top-40 bg-cream border border-champagne rounded-xl p-6 flex flex-col gap-5">
               <div>
                 <p className="font-sans text-xs text-cappuccino uppercase tracking-widest mb-1">
                   {BRAND_NAME}

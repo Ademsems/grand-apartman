@@ -28,12 +28,12 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-paper/95 backdrop-blur-sm shadow-sm py-2"
-          : "bg-transparent py-4"
+          ? "bg-paper/95 backdrop-blur-sm shadow-sm py-3"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-        <Logo variant={scrolled ? "dark" : "light"} height={scrolled ? 36 : 44} />
+        <Logo variant={scrolled ? "dark" : "light"} height={scrolled ? 90 : 110} />
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">

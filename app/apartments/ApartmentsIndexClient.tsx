@@ -12,7 +12,7 @@ export default function ApartmentsIndexClient({ images }: Props) {
   const { t, locale } = useLang();
 
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-6 bg-paper min-h-screen">
+    <div className="pt-40 pb-24 px-4 sm:px-6 bg-paper min-h-screen">
       <div className="max-w-7xl mx-auto">
         <FadeIn className="text-center mb-16">
           <div className="filigree-divider mb-8">
