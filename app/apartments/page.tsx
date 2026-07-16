@@ -6,7 +6,7 @@ import ApartmentsIndexClient from "./ApartmentsIndexClient";
 export const metadata: Metadata = {
   title: `Apartments | ${BRAND_NAME}`,
   description:
-    "Browse our three luxury vacation apartments in Podhajska, Slovakia. Each is fully equipped and moments from the thermal spa.",
+    "Browse our three luxury vacation apartments in Podhajska, Slovakia. Each is fully equipped and moments from the Thermal Baths.",
 };
 
 export default function ApartmentsPage() {

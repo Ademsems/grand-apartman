@@ -37,6 +37,9 @@ export default function Footer() {
               <Link href="/apartments" className="text-sm hover:text-gold transition-colors">
                 {t.nav.apartments}
               </Link>
+              <Link href="/about" className="text-sm hover:text-gold transition-colors">
+                {t.nav.about}
+              </Link>
               <Link href="/#amenities" className="text-sm hover:text-gold transition-colors">
                 {t.nav.amenities}
               </Link>

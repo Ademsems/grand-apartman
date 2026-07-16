@@ -30,7 +30,6 @@ export default function ApartmentsIndexClient({ images }: Props) {
           {APARTMENTS.map((apt, i) => {
             const name = locale === "sk" ? apt.nameSuffixSk : apt.nameSuffix;
             const shortDesc = locale === "sk" ? apt.shortDescSk : apt.shortDesc;
-            const beds = locale === "sk" ? apt.bedsSk : apt.beds;
             const aptImages = images[apt.slug] ?? [];
 
             return (
@@ -54,8 +53,6 @@ export default function ApartmentsIndexClient({ images }: Props) {
                         <span>{apt.size}</span>
                         <span>·</span>
                         <span>{t.apartments.sleeps} {apt.sleeps}</span>
-                        <span>·</span>
-                        <span>{beds}</span>
                       </div>
                       <p className="font-sans text-sm text-espresso-soft leading-relaxed mt-4 max-w-lg">
                         {shortDesc}

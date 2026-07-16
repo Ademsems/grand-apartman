@@ -40,7 +40,6 @@ export default function ApartmentPageClient({ apt, images }: Props) {
 
   const name = locale === "sk" ? apt.nameSuffixSk : apt.nameSuffix;
   const description = locale === "sk" ? apt.descriptionSk : apt.description;
-  const beds = locale === "sk" ? apt.bedsSk : apt.beds;
   const bathrooms = locale === "sk" ? apt.bathroomsSk : apt.bathrooms;
   const houseRules = locale === "sk" ? HOUSE_RULES.sk : HOUSE_RULES.en;
 
@@ -78,7 +77,6 @@ export default function ApartmentPageClient({ apt, images }: Props) {
                 {[
                   { label: t.apartments.size, value: apt.size },
                   { label: t.apartments.sleeps, value: apt.sleeps.toString() },
-                  { label: t.apartments.beds, value: beds },
                   { label: t.apartments.bathrooms, value: bathrooms },
                 ].map((f) => (
                   <div key={f.label} className="bg-cream rounded-lg p-4 border border-champagne">

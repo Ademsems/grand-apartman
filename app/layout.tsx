@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: `%s | ${BRAND_NAME}`,
   },
   description:
-    "Grand Apartman offers beautifully appointed luxury vacation apartments in Podhajska, Slovakia — steps from the famous thermal spa.",
+    "Grand Apartman offers beautifully appointed luxury vacation apartments in Podhajska, Slovakia — steps from the famous Thermal Baths.",
   metadataBase: new URL("https://grandapartman.sk"),
   openGraph: {
     type: "website",

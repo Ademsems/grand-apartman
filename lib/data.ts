@@ -91,7 +91,7 @@ export const HOUSE_RULES = {
 
 export const LOCATION_HIGHLIGHTS = {
   en: [
-    "5-minute walk to Termálne kúpalisko Podhajska (thermal spa & wellness)",
+    "5-minute walk to Podhajska Thermal Baths & wellness",
     "Cafés & restaurants ~300–350 m away (Penzion 3galeria, Slovenská reštaurácia, La Rossa Podhájska)",
     "Train station & local food store within walking distance",
     "Small cinema in town",
@@ -100,7 +100,7 @@ export const LOCATION_HIGHLIGHTS = {
     "Mojmírovce Manor House ~37 km",
   ],
   sk: [
-    "5 minút pešo na Termálne kúpalisko Podhajska (termálne kúpele & wellness)",
+    "5 minút pešo na Termálne Kúpalisko Podhajska",
     "Kaviarne a reštaurácie ~300–350 m (Penzion 3galeria, Slovenská reštaurácia, La Rossa Podhájska)",
     "Vlaková stanica a predajňa potravín v pešej dostupnosti",
     "Malé kino v meste",
@@ -379,7 +379,7 @@ export const APARTMENTS: Apartment[] = [
     nameSuffix: "Superior Apartment with Balcony — Room 308",
     nameSuffixSk: "Superior apartmán s balkónom — izba 308",
     size: "32 m²",
-    sleeps: 2,
+    sleeps: 4,
     beds: "1 extra-large double bed",
     bedsSk: "1 extra veľká manželská posteľ",
     bathrooms: "1 bathroom (walk-in shower)",
@@ -441,7 +441,7 @@ Parkety a dlaždicové podlahy, hypoalergénna posteľná bielizeň, trezor a ž
     nameSuffix: "Superior Apartment with Balcony — Room 301",
     nameSuffixSk: "Superior apartmán s balkónom — izba 301",
     size: "32 m²",
-    sleeps: 2,
+    sleeps: 4,
     beds: "1 extra-large double bed",
     bedsSk: "1 extra veľká manželská posteľ",
     bathrooms: "1 bathroom (walk-in shower)",
@@ -472,7 +472,7 @@ export const PROPERTY_AMENITIES = {
   en: [
     { icon: "wifi", label: "Free WiFi" },
     { icon: "car", label: "Free private parking" },
-    { icon: "waves", label: "Moments from Podhajska's thermal pools & wellness" },
+    { icon: "waves", label: "Moments from Podhajska's Thermal Baths & wellness" },
     { icon: "snowflake", label: "Air conditioning" },
     { icon: "utensils", label: "Fully equipped kitchen" },
     { icon: "key", label: "Self check-in" },
