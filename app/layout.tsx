@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import { CookieProvider } from "@/lib/CookieContext";
@@ -61,6 +62,7 @@ export default function RootLayout({
             <CookieBanner />
           </CookieProvider>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
