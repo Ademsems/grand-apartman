@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getImages } from "@/lib/getImages";
 import { APARTMENTS } from "@/lib/data";
 import HeroSection from "@/components/HeroSection";
@@ -6,6 +7,10 @@ import ApartmentsSection from "@/components/ApartmentsSection";
 import AmenitiesSection from "@/components/AmenitiesSection";
 import LocationSection from "@/components/LocationSection";
 import ContactSection from "@/components/ContactSection";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   const heroImages = getImages("images/hero");

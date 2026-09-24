@@ -4,6 +4,7 @@ import LegalPageClient from "./LegalPageClient";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${BRAND_NAME}`,
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

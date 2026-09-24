@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
-import { APARTMENTS } from "@/lib/data";
+import { APARTMENTS, SITE_URL } from "@/lib/data";
 
-const BASE_URL = "https://grandapartman.sk";
+const BASE_URL = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const aptPages = APARTMENTS.map((a) => ({

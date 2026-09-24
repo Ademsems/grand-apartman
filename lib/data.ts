@@ -5,6 +5,11 @@
 export const BRAND_NAME = "Grand Apartman";
 export const LOCATION = "Podhajska, Slovakia";
 
+// Canonical production origin. Vercel serves www and 308-redirects the apex to it.
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.grandapartman.sk"
+).replace(/\/+$/, "");
+
 // Main property Booking.com URL
 export const MAIN_BOOKING_URL =
   "https://www.booking.com/hotel/sk/grand-apartman-5-star-luxury-podhajska-apartman.en-gb.html?aid=964694&app_hotel_id=13046959";

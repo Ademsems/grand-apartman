@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${apt.nameSuffix} | ${BRAND_NAME}`,
     description: apt.shortDesc,
+    alternates: { canonical: `/apartments/${apt.slug}` },
   };
 }
 

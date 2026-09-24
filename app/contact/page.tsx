@@ -5,6 +5,7 @@ import ContactSection from "@/components/ContactSection";
 export const metadata: Metadata = {
   title: `Contact | ${BRAND_NAME}`,
   description: "Get in touch with Grand Apartman — we're happy to answer questions and help you plan your stay in Podhajska.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

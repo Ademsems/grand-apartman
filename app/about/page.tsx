@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: `About Us | ${BRAND_NAME}`,
   description:
     "Meet Simon and Anna — the couple behind Grand Apartman. Learn about our story, our 9.9 Booking.com rating, and what makes our apartments in Podhajska special.",
+  alternates: { canonical: "/about" },
   openGraph: {
     title: `About Us | ${BRAND_NAME}`,
     description:

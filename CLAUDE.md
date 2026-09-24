@@ -9,7 +9,7 @@ Guidance for Claude Code (and any other agent) working in this repository.
 - **Client:** Simon & Anna Wheeler, operating as **Wheeler A&S s. r. o.** — IČO `57 092 036`, registered in the Commercial Register of the District Court Nitra, seat at Medvecké 3, 935 41 Plavé Vozokany, Slovak Republic. See `COMPANY_LEGAL` in [`lib/data.ts`](lib/data.ts).
 - **Hosts:** Simon (English + Slovak) and Anna/Anka (Slovak + Hungarian) — a married couple who personally manage guest communication. Their story is told in full on [`/about`](app/about/AboutPageClient.tsx).
 - **Agency:** [DunajMedia](https://dunajmedia.sk) built and maintains the site (credited in the footer).
-- **Domain:** `grandapartman.sk`, hosted on Vercel. Contact email delivery via Resend.
+- **Domain:** `grandapartman.sk`, hosted on Vercel. **Canonical host is `https://www.grandapartman.sk`** (see §7). Contact email delivery via Resend.
 - **Reputation anchor:** 9.9 / 10 on Booking.com (38 reviews) — a manually captured snapshot in `REVIEW_SNAPSHOT` (`lib/data.ts`), not a live API integration. Update it periodically by hand.
 
 ## 2. Tech Stack & Architecture
@@ -111,3 +111,12 @@ Quiet-luxury palette, defined in `tailwind.config.ts` — always use these token
 - **Git routine:** stage intentionally (avoid `git add -A` when untracked files might be scratch/config noise), then `git commit -m "..."` and `git push`.
 - Prefer small, verifiable commits with imperative, present-tense messages (`feat: ...`, `fix: ...`) consistent with existing history (`git log --oneline`).
 - This repo has no automated test suite — "verified" means a clean `build`/`lint` plus manual check in the browser (`npm run dev` at `http://localhost:3000`) for anything UI-visible, especially bilingual copy (check both EN and SK) and the 360px mobile breakpoint.
+
+## 7. Canonical Domain & Redirect Policy
+
+- **Canonical origin: `https://www.grandapartman.sk`.** Vercel serves the `www` host directly; the apex (`grandapartman.sk`) and all `http://` URLs 308-redirect to it. Verified with `curl -sI` on all four host/protocol variants.
+- **Single source of truth:** `SITE_URL` in [`lib/data.ts`](lib/data.ts) (`NEXT_PUBLIC_SITE_URL` env override, default `https://www.grandapartman.sk`, trailing slash stripped). `metadataBase` in `app/layout.tsx`, every URL in `app/sitemap.ts`, the `sitemap:` line in `app/robots.ts`, and the JSON-LD `url` on apartment pages all derive from it. **Never hardcode the domain anywhere else.**
+- **Sitemap rule:** every sitemap URL must be a final 200 URL (canonical host, `https://`, no trailing slash except the bare homepage). Listing an apex/`http` URL is what triggers Search Console's "Page with redirect" notice.
+- **Canonicals are per page**, declared as relative paths (`alternates: { canonical: "/about" }`) that resolve against `metadataBase`. New pages must declare their own canonical, and `generateMetadata` routes must set it from the slug. Do **not** set a canonical in the root layout: it would be inherited by any page that lacks its own and mark it a duplicate of the homepage.
+- **Internal links** are relative (`/apartments`, `/#location`); never hardcode protocol or host in components.
+- **If the primary domain ever changes** (e.g. apex becomes primary), update the Vercel domain redirect and `SITE_URL` default together. If `NEXT_PUBLIC_SITE_URL` is set in Vercel, it must match the host Vercel serves directly, or the sitemap/canonicals will point at a redirecting host again.

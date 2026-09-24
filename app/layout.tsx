@@ -7,7 +7,7 @@ import { CookieProvider } from "@/lib/CookieContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
-import { BRAND_NAME, LOCATION } from "@/lib/data";
+import { BRAND_NAME, LOCATION, SITE_URL } from "@/lib/data";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   description:
     "Grand Apartman offers beautifully appointed luxury vacation apartments in Podhajska, Slovakia — steps from the famous Thermal Baths.",
-  metadataBase: new URL("https://grandapartman.sk"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "en_GB",

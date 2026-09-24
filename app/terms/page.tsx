@@ -4,6 +4,7 @@ import LegalPageClient from "../privacy/LegalPageClient";
 
 export const metadata: Metadata = {
   title: `Terms & Conditions | ${BRAND_NAME}`,
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

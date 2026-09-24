@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/LanguageContext";
-import { type Apartment, BRAND_NAME, HOUSE_RULES } from "@/lib/data";
+import { type Apartment, BRAND_NAME, HOUSE_RULES, SITE_URL } from "@/lib/data";
 import FadeIn from "@/components/FadeIn";
 import ContactForm from "@/components/ContactForm";
 import ApartmentGallery from "@/components/ApartmentGallery";
@@ -14,7 +14,7 @@ function ApartmentJsonLd({ apt }: { apt: Apartment }) {
     name: `${BRAND_NAME} — ${apt.nameSuffix}`,
     description: apt.shortDesc,
     numberOfRooms: 1,
-    url: `https://grandapartman.sk/apartments/${apt.slug}`,
+    url: `${SITE_URL}/apartments/${apt.slug}`,
     containedInPlace: {
       "@type": "LodgingBusiness",
       name: BRAND_NAME,

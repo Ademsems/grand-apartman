@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: `Apartments | ${BRAND_NAME}`,
   description:
     "Browse our three luxury vacation apartments in Podhajska, Slovakia. Each is fully equipped and moments from the Thermal Baths.",
+  alternates: { canonical: "/apartments" },
 };
 
 export default function ApartmentsPage() {
