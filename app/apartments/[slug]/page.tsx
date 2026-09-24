@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { APARTMENTS, BRAND_NAME } from "@/lib/data";
+import { APARTMENTS } from "@/lib/data";
 import { getImages } from "@/lib/getImages";
 import ApartmentPageClient from "./ApartmentPageClient";
 
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const apt = APARTMENTS.find((a) => a.slug === params.slug);
   if (!apt) return {};
   return {
-    title: `${apt.nameSuffix} | ${BRAND_NAME}`,
+    title: apt.nameSuffix,
     description: apt.shortDesc,
     alternates: { canonical: `/apartments/${apt.slug}` },
   };

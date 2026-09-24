@@ -120,3 +120,12 @@ Quiet-luxury palette, defined in `tailwind.config.ts` — always use these token
 - **Canonicals are per page**, declared as relative paths (`alternates: { canonical: "/about" }`) that resolve against `metadataBase`. New pages must declare their own canonical, and `generateMetadata` routes must set it from the slug. Do **not** set a canonical in the root layout: it would be inherited by any page that lacks its own and mark it a duplicate of the homepage.
 - **Internal links** are relative (`/apartments`, `/#location`); never hardcode protocol or host in components.
 - **If the primary domain ever changes** (e.g. apex becomes primary), update the Vercel domain redirect and `SITE_URL` default together. If `NEXT_PUBLIC_SITE_URL` is set in Vercel, it must match the host Vercel serves directly, or the sitemap/canonicals will point at a redirecting host again.
+
+## 8. Metadata Title Convention
+
+- **The brand suffix is added once, by the root layout.** `app/layout.tsx` defines `title: { default: "Grand Apartman | Luxury Apartments in Podhajska, Slovakia", template: "%s | Grand Apartman" }`.
+- **Page titles are the bare page name only**: `title: "About Us"`, `title: "Contact"`, `title: apt.nameSuffix` in `generateMetadata`. **Never** append `| Grand Apartman` (or `${BRAND_NAME}`) in a page: the template adds it, and doing both renders "About Us | Grand Apartman | Grand Apartman".
+- **Homepage** declares no title, so it resolves to the layout `default` (the template is not applied to it). Do not add a homepage title.
+- **Open Graph titles are the exception**: `openGraph.title` does not pass through the template, so an explicit OG title must include the brand itself (see `app/about/page.tsx`).
+- Titles are English-only: metadata is rendered on the server, while the EN/SK toggle is client-side (`localStorage`).
+- After changing titles, verify `<title>` in the rendered HTML appears once per page with a single brand suffix.

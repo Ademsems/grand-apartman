@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { BRAND_NAME } from "@/lib/data";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: `Contact | ${BRAND_NAME}`,
+  title: "Contact",
   description: "Get in touch with Grand Apartman — we're happy to answer questions and help you plan your stay in Podhajska.",
   alternates: { canonical: "/contact" },
 };

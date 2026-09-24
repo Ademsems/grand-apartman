@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { APARTMENTS, BRAND_NAME } from "@/lib/data";
+import { APARTMENTS } from "@/lib/data";
 import { getImages } from "@/lib/getImages";
 import ApartmentsIndexClient from "./ApartmentsIndexClient";
 
 export const metadata: Metadata = {
-  title: `Apartments | ${BRAND_NAME}`,
+  title: "Apartments",
   description:
     "Browse our three luxury vacation apartments in Podhajska, Slovakia. Each is fully equipped and moments from the Thermal Baths.",
   alternates: { canonical: "/apartments" },
